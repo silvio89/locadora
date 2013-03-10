@@ -1,0 +1,19 @@
+<%= form_for @filme, :url => { :action => :show, :id2 => @usuario.id } do |f| %>
+  <% if @filme.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@filme.errors.count, "error") %> prohibited this filme from being saved:</h2>
+
+      <ul>
+      <% @filme.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  	<spam id=nome_titulo> Titulo:</spam> <%= f.text_field :titulo %> <br />
+	<spam id=nome_ano> Ano: </spam> &nbsp <%= f.text_field :ano %> <br />
+	<%= f.submit %>
+	
+<% end -%>
+

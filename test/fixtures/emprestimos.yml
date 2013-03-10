@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  alugado: 2013-03-03
+  devolvido: 2013-03-03
+  filme_id: 1
+
+two:
+  alugado: 2013-03-03
+  devolvido: 2013-03-03
+  filme_id: 1

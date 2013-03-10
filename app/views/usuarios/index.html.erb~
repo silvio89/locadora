@@ -1,0 +1,31 @@
+<h1>Listing usuarios</h1>
+
+<table border=1>
+  <tr>
+    <th>Codigo</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @usuarios.each do |usuario| %>
+  <tr>
+   	<td><%= link_to usuario.codigo, :controller => :filmes, :action => :show, :boscet_id => usuario.id %></td>
+		<% if usuario.cliente.blank? %>
+			<td><spam>Cliente em branco</spam></td>
+		<% else %>
+    	<td><%= link_to 'Mostrar Cliente', usuario.cliente %></td>
+		<% end %>
+		<% if usuario.cliente.blank? %>
+    	<td><%= link_to 'editar/inserir informações do usuario', :controller => :clientes, :action => :new, :id => usuario.id %></td>
+		<% else %>
+			<td><%= link_to 'editar/inserir informações do usuario', :controller => :clientes, :action => :edit, :id => usuario.cliente.id %></td>
+		<% end %>
+    <td><%= link_to 'Excluir', usuario, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Usuario', new_usuario_path %>

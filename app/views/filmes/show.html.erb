@@ -1,0 +1,19 @@
+Lista de todos os filmes <br />
+<% if !@filmes.blank? %>
+	<table border=2>
+		<tr>
+			<th>Titulo</th>
+			<th>Ano</th>
+		</tr>
+		
+	<% for item in @filmes %>
+	<tr>
+		<td><%= link_to item.titulo, :controller => :emprestimos, :action => :new, :id => item.id, :ud => params[:id] %> </td>
+		<td><%= item.ano %></td>
+		<td> <%= link_to 'Excluir', item, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
+	</tr>
+	<% end %>
+	</table>
+<% else %>
+Sem filmes ainda.
+<% end %>

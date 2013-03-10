@@ -1,0 +1,17 @@
+class EmprestimosController < ApplicationController
+	
+	def new
+		@aux = params(:teste)
+		@filme = Filme.find(params[:id])
+		@emprestimo = @filme.emprestimos.build	
+	end
+	
+	def create
+		@filme = Filme.find(params[:id])
+		@emprestimo = @filme.emprestimos.build(params[:emprestimo])
+		if @emprestimo.save
+			redirect_to new_emprestimo_path(:id => @filme.id)
+		end
+	end
+	
+end

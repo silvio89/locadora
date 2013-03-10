@@ -1,0 +1,32 @@
+<h1>Filme <%= @filme.titulo %> (<%= link_to "Voltar", new_filme_path %>)</h1>
+<hr />
+<%= form_for @emprestimo, :url => { :action => :create, :id => @filme.id, :ud => @usuario.id } do |f| -%>
+	Alugado em: <%= f.text_field :alugado %> <br />
+	Devolvido em: <%= f.text_field :devolvido %> <br />
+	<%= f.submit %>
+<% end -%>
+
+<hr />
+Lista de todos os filmes <br />
+<% if @filme.emprestimos.exists and !@filme.emprestimos.blank? %>
+	<table border=1>
+	
+		<tr>
+			<th>Alugado</th>
+			<th>Devolvido</th>
+		</tr>
+			
+	<% for item in @filme.emprestimos %>
+		<% if !item.alugado.nil? %>
+			<tr>
+				<td> <%= item.alugado %> </td>
+				<td> <%= item.devolvido %> </td>
+			</tr>
+			<% end %>
+	<% end %>
+	</table>
+<% else %>
+Sem emprestimos ainda.
+<% end %>
+
+
